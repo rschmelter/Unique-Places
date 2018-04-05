@@ -4,5 +4,6 @@ class CreatePlaces < ActiveRecord::Migration[5.1]
       t.string :type
       t.string :description
       t.integer :area_id
+    end
   end
 end
