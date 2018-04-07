@@ -59,9 +59,6 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/areas' do
-    "Hello World"
-  end
 
 
 end

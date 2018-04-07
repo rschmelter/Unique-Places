@@ -5,6 +5,7 @@ class AreasController < ApplicationController
     erb :'/areas/index'
   end
 
+
   get '/areas/new' do
     if !logged_in?
       redirect to '/login'
@@ -13,7 +14,7 @@ class AreasController < ApplicationController
     end
   end
 
-  post 'areas' do
+  post '/areas' do
     if !logged_in?
       redirect to '/login'
     elsif
@@ -27,7 +28,7 @@ class AreasController < ApplicationController
     end
   end
 
-  get '/bags/:id' do
+  get '/areas/:id' do
     if !logged_in?
       redirect to "/login"
     else
