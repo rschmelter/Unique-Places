@@ -1,0 +1,7 @@
+<% @areas.each do |area| %>
+  <%= area.country_name %><br />
+  <%= area.city_name %> <br />
+  <a href="/areas/<%=area.id%>/edit">Edit</a>
+  <br />
+  <br />
+<% end %>

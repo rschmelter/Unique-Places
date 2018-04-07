@@ -1,5 +1,18 @@
 class UsersController < ApplicationController
 
+  # get '/users/:id' do
+  #   # if !logged_in?
+  #   #   redirect '/areas'
+  #   # end
+  #
+  #   @user = User.find(params[:id])
+  #   if !@user.nil? && @user == current_user
+  #     erb :'/users/show'
+  #   else
+  #     redirect '/areas'
+  #   end
+  # end
+
   get '/signup' do
     if !logged_in?
       erb :'/users/new'
@@ -38,10 +51,17 @@ class UsersController < ApplicationController
   end
 
   get '/logout' do
-    session.clear
-    redirect to '/login'
+    if logged_in?
+      session.clear
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
   end
 
+  get '/areas' do
+    "Hello World"
+  end
 
 
 end
