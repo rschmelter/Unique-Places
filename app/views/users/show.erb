@@ -1,0 +1,6 @@
+<p> Here are the areas you've visited, <%= @user.username %>
+<% @user.areas.each do |bag| %>
+  <ul>
+    <li><a href="/areas/<%=area.id%>"><%= area.name %></a></li>
+  </ul>
+<% end %>
