@@ -1,8 +1,9 @@
 <h1>Add an Interesting Place You've Found</h1>
 
+
 <form action="/places" method="POST">
 <label>Type of Place</label>
-<input type="text" name="type">
+<input type="text" name="place_type">
 <br></br>
 
 <label>Name of Place</label>
@@ -12,6 +13,13 @@
 <label>Description of Place</label>
 <input type="text" name="description">
 <br></br>
+
+<label> Which area did you find this place in? </label>
+<select name="area_id">
+  <% current_user.areas.each do |area| %>
+    <option value=<%=area.id %>><%= area.city_name %>, <%=area.country_name%></option>
+  <% end %>
+</select>
 
 <input type="submit" value="Create Place">
 

@@ -1,5 +1,7 @@
 class AreasController < ApplicationController
 
+
+
   get '/areas' do
     if !logged_in?
       redirect to '/login'
@@ -53,6 +55,7 @@ class AreasController < ApplicationController
       redirect to '/areas/new'
     else
       @area = Area.new(country_name: params[:country_name], city_name: params[:city_name])
+
       @area.user_id = current_user.id
       @area.save
       redirect to "/areas/#{@area.id}"
