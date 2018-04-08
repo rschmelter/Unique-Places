@@ -9,6 +9,20 @@ class AreasController < ApplicationController
     end
   end
 
+  get "/areas/:id/edit" do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @area = Area.find_by_id(params[:id])
+    end
+
+    if @area && @area.user == current_user
+      erb :'/areas/edit'
+    else
+      redirect to '/areas'
+    end
+  end
+
 
   get '/areas/new' do
     if !logged_in?
