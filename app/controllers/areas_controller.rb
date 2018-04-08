@@ -23,6 +23,19 @@ class AreasController < ApplicationController
     end
   end
 
+  post '/areas/:id' do
+    if !logged_in?
+      redirect to '/login'
+    elsif
+      params[:country_name] == "" || params[:city_name] == ""
+      redirect to "areas/#{area.id}/edit"
+    else
+      @area = Area.find_by_id(params[:id])
+      @area.update(country_name: params[:country_name], city_name: params[:city_name])
+      redirect to "/areas/#{@area.id}"
+    end
+  end
+
 
   get '/areas/new' do
     if !logged_in?
