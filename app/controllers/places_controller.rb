@@ -56,6 +56,21 @@ require 'pry'
     end
   end
 
+  post '/places/:id' do
+    if !logged_in?
+      redirect to '/login'
+    elsif
+      params[:place_type] == "" || params[:name] == "" || params[:description] == ""
+      redirect to "places/#{place.id}/edit"
+    else
+      @place = Place.find_by_id(params[:id])
+      @place.update(place_type: params[:place_type], name: params[:name], description: params[:description])
+      @place.area_id = params[:area_id]
+      @place.save
+      redirect to "/places/#{@place.id}"
+    end
+  end
+
 
 
 
