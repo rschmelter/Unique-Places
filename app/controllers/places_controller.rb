@@ -9,4 +9,13 @@ class PlacesController < ApplicationController
     end
   end
 
+  get '/places/new' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      erb :'places/new'
+    end
+  end
+
+
 end
