@@ -1,0 +1,12 @@
+<h1>Check out all of these interesting places!</h1>
+
+<% @places.each do |place| %>
+  <div>
+    <p>Found in <%=place.area.city_name%>, <%=place.area.country_name%></p>
+    <p>Type of place: <%=place.place_type%></p>
+    <p>Name of place: <%=place.name%></p>
+    <p>Description: <%=place.description%></p>
+  </div>
+  <p>___________________________________________________________________</p>
+  <br></br>
+<% end %>
