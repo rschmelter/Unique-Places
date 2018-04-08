@@ -27,7 +27,7 @@ require 'pry'
       @place = Place.new(place_type: params[:place_type], name: params[:name], description: params[:description])
       @place.area_id = params[:area_id]
       @place.save
-      redirect to "/places/#{place.id}"
+      redirect to "/places/#{@place.id}"
     end
   end
 
