@@ -1,1 +1,26 @@
-<h1>Hello World</h1>
+<h1>Edit <%=@place.name%></h1>
+
+<form action="/places/<%=@place.id%>" method="POST">
+<label>Type of Place</label>
+<input type="text" name="place_type">
+<br></br>
+
+<label>Name of Place</label>
+<input type="text" name="name">
+<br></br>
+
+<label>Description of Place</label>
+<input type="text" name="description">
+<br></br>
+
+<label> Which area did you find this place in? </label>
+<select name="area_id">
+  <% current_user.areas.each do |area| %>
+    <option value=<%=area.id %>><%= area.city_name %>, <%=area.country_name%></option>
+  <% end %>
+</select>
+
+<input type="submit" value="Edit Place">
+
+
+</form>
