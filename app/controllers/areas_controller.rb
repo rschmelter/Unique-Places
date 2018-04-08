@@ -1,8 +1,12 @@
 class AreasController < ApplicationController
 
   get '/areas' do
-    @areas = Area.all
-    erb :'/areas/index'
+    if !logged_in?
+      redirect to '/login'
+    else
+      @areas = Area.all
+      erb :'/areas/index'
+    end
   end
 
 
