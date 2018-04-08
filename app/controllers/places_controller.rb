@@ -1,5 +1,7 @@
 class PlacesController < ApplicationController
 require 'pry'
+
+
   get '/places' do
     if !logged_in?
       redirect to '/login'
@@ -38,8 +40,25 @@ require 'pry'
       @place = Place.find(params[:id])
       erb :'/places/show'
     end
-
   end
+
+  get '/places/:id/edit' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @place = Place.find_by_id(params[:id])
+    end
+
+    if @place && @place.area.user_id == current_user.id
+      erb :'/places/edit'
+    else
+      redirect to '/areas'
+    end
+  end
+
+
+
+
 
 
 end
