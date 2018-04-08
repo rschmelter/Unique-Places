@@ -27,13 +27,17 @@ require 'pry'
       @place = Place.new(place_type: params[:place_type], name: params[:name], description: params[:description])
       @place.area_id = params[:area_id]
       @place.save
-
-      redirect to "/yo"
+      redirect to "/places/#{place.id}"
     end
   end
 
-  get '/yo' do
-    "Hello World"
+  get '/places/:id' do
+    if !logged_in?
+      redirect to "/login"
+    else
+      @place = Place.find(params[:id])
+      erb :'/places/show'
+    end
 
   end
 
