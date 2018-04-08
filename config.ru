@@ -5,5 +5,5 @@ end
 use Rack::MethodOverride
 use UsersController
 use AreasController
-
+use PlacesController
 run ApplicationController
