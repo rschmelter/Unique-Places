@@ -71,6 +71,21 @@ require 'pry'
     end
   end
 
+  delete '/places/:id/delete' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      @place = Place.find_by_id(params[:id])
+    end
+    if @place && @place.area.user_id == current_user.id
+      @place.delete
+      redirect to '/places'
+    else
+      redirect to '/login'
+    end
+
+  end
+
 
 
 
