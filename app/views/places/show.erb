@@ -5,3 +5,7 @@
 <h3><%=@place.description%></h3>
 
 <p>You Found this place in <%=@place.area.city_name%>, <%=@place.area.country_name%></p>
+
+<form method="POST" action="/places/<%=@place.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete this Place">
