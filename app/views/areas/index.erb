@@ -4,6 +4,6 @@
 <br />
 
 <% @areas.each do |area| %>
-  <h4> <%= area.city_name %>, <%= area.country_name %></h4>
+  <h4><a href="/areas/<%=area.id%>">  <%= area.city_name %>, <%= area.country_name %></a></h4>
   <br />
 <% end %>
