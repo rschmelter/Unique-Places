@@ -1,7 +1,4 @@
-<h1>Check Out All of the Places Others Have Visited</h1>
-
-<h3>Or <a href="/areas/new">Add an Area</a> and Start Sharing the Interesting Places You Found There</h3>
-<br />
+<h1>Check Out All of the Places People Have Visited</h1>
 
 <% @areas.each do |area| %>
   <h4><a href="/areas/<%=area.id%>">  <%= area.city_name %>, <%= area.country_name %></a></h4>
