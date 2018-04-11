@@ -1,5 +1,7 @@
+require 'rack-flash'
+
 class PlacesController < ApplicationController
-require 'pry'
+use Rack::Flash
 
 
   get '/places' do
@@ -24,6 +26,7 @@ require 'pry'
       redirect to '/login'
     elsif
       params[:place_type] == "" || params[:name] == "" || params[:description] == ""
+      flash[:message] = "Please fill out all required fields to post this place"
       redirect to '/places/new'
     else
       @place = Place.new(place_type: params[:place_type], name: params[:name], description: params[:description])
@@ -59,11 +62,14 @@ require 'pry'
   post '/places/:id' do
     if !logged_in?
       redirect to '/login'
-    elsif
-      params[:place_type] == "" || params[:name] == "" || params[:description] == ""
-      redirect to "places/#{place.id}/edit"
     else
       @place = Place.find_by_id(params[:id])
+    end
+    if params[:place_type] == "" || params[:name] == "" || params[:description] == ""
+      flash[:message] = "Please fill out all of the fields to edit this place"
+      redirect to "places/#{@place.id}/edit"
+    else
+
       @place.update(place_type: params[:place_type], name: params[:name], description: params[:description])
       @place.area_id = params[:area_id]
       @place.save

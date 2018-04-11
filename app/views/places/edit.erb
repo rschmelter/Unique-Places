@@ -1,5 +1,9 @@
-<h1>Edit <%=@place.name%></h1>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
 
+
+<h1>Edit <%=@place.name%></h1>
 <form action="/places/<%=@place.id%>" method="POST">
 <label>Type of Place</label>
 <input type="text" name="place_type">
