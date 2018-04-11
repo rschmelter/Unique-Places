@@ -1,10 +1,10 @@
-<h1><%=@place.name%></h1>
+<h2><%=@place.name%> was found in <%=@place.area.city_name%>, <%=@place.area.country_name%></h2>
 
-<h2><%=@place.place_type%></h2>
+<u><h2>Type of place:</u> <%=@place.place_type%></h2>
 
-<h3><%=@place.description%></h3>
+<u><p>Description:</u> <%=@place.description%></p>
 
-<p>You Found this place in <%=@place.area.city_name%>, <%=@place.area.country_name%></p>
+
 
 <form method="POST" action="/places/<%=@place.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
