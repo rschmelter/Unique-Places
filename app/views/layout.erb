@@ -6,10 +6,12 @@
   </head>
   <body>
     <% if logged_in? %>
-    <h4><a href="/users/<%=current_user.id%>">See the Areas You've Been</a></h4>
-    <h4><a href="/areas/new">Add an Area You've Visited</a></h4>
-    <h4><a href="/places/new">Add an Intersting Place You've Found</a></h4>
-    <h4><a href="/logout">Logout</a></h4>
+      <h4><a href="/users/<%=current_user.id%>">See the Areas You've Been</a></h4>
+      <h4><a href="/areas/new">Add an Area You've Visited</a></h4>
+      <h4><a href="/places/new">Add an Intersting Place You've Found</a></h4>
+      <h4><a href="/logout">Logout</a></h4>
+    <% else %>
+      <h3><a href="/login">Login</a> or <a href="/signup"> Sign Up </a></h3>
 
     <%end%>
     <%=yield%>
