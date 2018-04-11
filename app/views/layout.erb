@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Uniqe Places</title>
+
+  </head>
+  <body>
+    <% if logged_in? %>
+    <h4><a href="/users/<%=current_user.id%>">See the Areas You've Been</a></h4>
+    <h4><a href="/logout">Logout</a></h4>
+
+    <%end%>
+    <%=yield%>
+  </body>
+</html>
