@@ -1,2 +1,7 @@
 <h2><%=@area.country_name%> </h2>
 <h2><%=@area.city_name%></h2>
+<div>
+  <%@area.places.each do |place|%>
+  <p><a href="/places/<%=place.id%>"><%=place.name%></a></p>
+  <%end%>
+</div>
