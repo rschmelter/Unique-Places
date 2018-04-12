@@ -1,7 +1,11 @@
 <h2><%=@area.city_name%>, <%=@area.country_name%> </h2>
 
+<%if @area.places.empty?%>
+  <p>No interesting places have been added to this area yet</p>
+<%else%>
 <div>
   <%@area.places.each do |place|%>
   <p><a href="/places/<%=place.id%>"><%=place.name%></a></p>
   <%end%>
 </div>
+<%end%>
