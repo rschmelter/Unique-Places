@@ -4,8 +4,12 @@
 
 <u><p>Description:</u> <%=@place.description%></p>
 
+<%if logged_in? && @place.area.user_id == current_user.id%>
 
+
+<h4><a href="/places/<%=@place.id%>/edit">Edit this Place</a></h4>
 
 <form method="POST" action="/places/<%=@place.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete this Place">
+<%end%>
