@@ -21,30 +21,6 @@ use Rack::Flash
     end
   end
 
-  post '/places' do
-    if !logged_in?
-      redirect to '/login'
-    elsif
-      params[:place_type] == "" || params[:name] == "" || params[:description] == ""
-      flash[:message] = "Please fill out all required fields to post this place"
-      redirect to '/places/new'
-    else
-      @place = Place.new(place_type: params[:place_type], name: params[:name], description: params[:description])
-      @place.area_id = params[:area_id]
-      @place.save
-      redirect to "/places/#{@place.id}"
-    end
-  end
-
-  get '/places/:id' do
-    if !logged_in?
-      redirect to "/login"
-    else
-      @place = Place.find(params[:id])
-      erb :'/places/show'
-    end
-  end
-
   get '/places/:id/edit' do
     if !logged_in?
       redirect to '/login'
@@ -71,6 +47,30 @@ use Rack::Flash
     else
 
       @place.update(place_type: params[:place_type], name: params[:name], description: params[:description])
+      @place.area_id = params[:area_id]
+      @place.save
+      redirect to "/places/#{@place.id}"
+    end
+  end
+
+  get '/places/:id' do
+    if !logged_in?
+      redirect to "/login"
+    else
+      @place = Place.find(params[:id])
+      erb :'/places/show'
+    end
+  end
+
+  post '/places' do
+    if !logged_in?
+      redirect to '/login'
+    elsif
+      params[:place_type] == "" || params[:name] == "" || params[:description] == ""
+      flash[:message] = "Please fill out all required fields to post this place"
+      redirect to '/places/new'
+    else
+      @place = Place.new(place_type: params[:place_type], name: params[:name], description: params[:description])
       @place.area_id = params[:area_id]
       @place.save
       redirect to "/places/#{@place.id}"

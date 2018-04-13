@@ -13,6 +13,14 @@ use Rack::Flash
     end
   end
 
+  get '/areas/new' do
+    if !logged_in?
+      redirect to '/login'
+    else
+      erb :'/areas/new'
+    end
+  end
+
   get "/areas/:id/edit" do
     if !logged_in?
       redirect to '/login'
@@ -41,13 +49,12 @@ use Rack::Flash
       redirect to "/areas/#{@area.id}"
     end
   end
-
-
-  get '/areas/new' do
+  get '/areas/:id' do
     if !logged_in?
-      redirect to '/login'
+      redirect to "/login"
     else
-      erb :'/areas/new'
+      @area = Area.find(params[:id])
+      erb :'/areas/show'
     end
   end
 
@@ -67,14 +74,6 @@ use Rack::Flash
     end
   end
 
-  get '/areas/:id' do
-    if !logged_in?
-      redirect to "/login"
-    else
-      @area = Area.find(params[:id])
-      erb :'/areas/show'
-    end
-  end
 
 
 
