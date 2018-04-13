@@ -1,16 +1,16 @@
 <h2><%=@area.city_name%>, <%=@area.country_name%> </h2>
+<%if @area.user_id == current_user.id %>
+  <h4><a href="/areas/<%=@area.id%>/edit">Edit this Area</a></h4>
+<%end%>
+
 
 <%if @area.places.empty?%>
   <p>No interesting places have been added to this area yet</p>
 <%else%>
 <div>
+  <p>Here are the interesting places found so far in <%=@area.city_name%>:</p>
   <%@area.places.each do |place|%>
   <p><a href="/places/<%=place.id%>"><%=place.name%></a></p>
   <%end%>
 </div>
-<%end%>
-
-<%if @area.user_id == current_user.id %>
-  <h4><a href="/areas/<%=@area.id%>/edit">Edit this Area</a></h4>
-
 <%end%>
