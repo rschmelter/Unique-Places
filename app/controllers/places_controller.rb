@@ -16,6 +16,8 @@ use Rack::Flash
   get '/places/new' do
     if !logged_in?
       redirect to '/login'
+    elsif current_user.areas.empty?
+      erb :error
     else
       erb :'places/new'
     end
