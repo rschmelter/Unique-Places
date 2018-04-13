@@ -26,7 +26,6 @@ use Rack::Flash
     if params[:username] == "" || params[:password] == ""
       flash[:message] = "Please fill out the username and password field to sign up."
       redirect to '/signup'
-
     elsif User.find_by(username: params[:username]) != nil
       flash[:message] = "This username is taken. Please choose a different one."
       redirect to '/signup'
@@ -64,6 +63,8 @@ use Rack::Flash
       redirect to '/'
     end
   end
+
+
 
 
 
